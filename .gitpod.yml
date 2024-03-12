@@ -14,7 +14,7 @@ tasks:
       sudo tailscaled      
    - name: androidstudio
      command: |
-      $HOME/android-studio/bin/studio.sh      
+      android-studio  
    - name: tailscale
      command: |
       if [ -n "${TS_STATE_TAILSCALE_EXAMPLE}" ]; then
