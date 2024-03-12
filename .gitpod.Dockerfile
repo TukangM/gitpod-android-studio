@@ -14,12 +14,15 @@ RUN curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key
 RUN update-alternatives --set ip6tables /usr/sbin/ip6tables-nft
 
 
-RUN install-packages openjdk-11-jdk -y \
+RUN apt-get update && \
+    apt-get install -y \
+        openjdk-11-jdk \
         libgtk-3-dev \
         libnss3-dev \
         fonts-noto \
-        fonts-noto-cjk \
-    && update-java-alternatives --set java-1.8.0-openjdk-amd64
+        fonts-noto-cjk && \
+    update-java-alternatives --set java-1.8.0-openjdk-amd64
+
 
 # Make some changes for our vnc client 
 RUN sed -i 's|resize=scale|resize=remote|g' /opt/novnc/index.html 
@@ -28,6 +31,4 @@ RUN sed -i 's|resize=scale|resize=remote|g' /opt/novnc/index.html
 
 USER gitpod
 
-RUN add-apt-repository ppa:maarten-fonville/android-studio && \
-    apt-get update && \
-    apt-get install android-sdk android-sdk-build-tools android-studio
+RUN add-apt-repository ppa:maarten-fonville/android-studio && apt-get update && apt-get install -y android-sdk android-sdk-build-tools android-studio
