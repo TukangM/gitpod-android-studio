@@ -28,4 +28,4 @@ RUN sed -i 's|resize=scale|resize=remote|g' /opt/novnc/index.html
 
 USER gitpod
 
-RUN add-apt-repository ppa:maarten-fonville/android-studio && apt-get update && apt-get install -y android-sdk android-sdk-build-tools android-studio
+RUN sudo add-apt-repository ppa:maarten-fonville/android-studio && sudo apt-get update && sudo apt-get install -y android-sdk android-sdk-build-tools android-studio
