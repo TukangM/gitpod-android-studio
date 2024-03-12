@@ -13,16 +13,13 @@ RUN curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key
      && sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-nft
 RUN update-alternatives --set ip6tables /usr/sbin/ip6tables-nft
 
-
 RUN apt-get update && \
     apt-get install -y \
         openjdk-11-jdk \
         libgtk-3-dev \
         libnss3-dev \
         fonts-noto \
-        fonts-noto-cjk && \
-    update-java-alternatives --set java-1.8.0-openjdk-amd64
-
+        fonts-noto-cjk
 
 # Make some changes for our vnc client 
 RUN sed -i 's|resize=scale|resize=remote|g' /opt/novnc/index.html 
