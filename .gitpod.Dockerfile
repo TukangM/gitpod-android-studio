@@ -13,7 +13,7 @@ RUN curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key
 RUN update-alternatives --set ip6tables /usr/sbin/ip6tables-nft
 
 
-RUN install-packages openjdk-8-jdk -y \
+RUN install-packages openjdk-11-jdk -y \
         libgtk-3-dev \
         libnss3-dev \
         fonts-noto \
@@ -29,11 +29,4 @@ USER gitpod
 
 RUN add-apt-repository ppa:maarten-fonville/android-studio && \
     apt-get update && \
-    apt-get install android-sdk \
-        lib32stdc++6 \
-        android-studio \
-        android-sdk-build-tools \
-        android-sdk \
-        android-sdk-platform-23 --no-install-recommends --yes \
-        && apt-get clean \
-        && rm -rf /var/lib/apt/lists/*
+    apt-get install android-sdk android-sdk-build-tools android-studio
