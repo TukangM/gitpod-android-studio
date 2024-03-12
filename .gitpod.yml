@@ -1,8 +1,6 @@
 image:
   file: .gitpod.Dockerfile
-
-tasks:  
-   
+  
 tasks:
     - name: tailscaled
       command: |
@@ -23,7 +21,8 @@ tasks:
           fi
     - name: androidstudio
       command: |
-          android_studio    
+          android_studio
+          
 ports:
   - port: 5900
     onOpen: ignore
